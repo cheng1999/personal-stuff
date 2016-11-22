@@ -168,6 +168,13 @@ let mapleader = ","
   map <C-u> <ScrollWheelUp>
   map <C-d> <scrollwheeldown>
   map <leader><leader>u :UndotreeToggle<CR>
-  map <leader><leader>e :NERDTreeToggle<CR>
+  map <C-e> :NERDTreeToggle<CR>
   nmap <F8> :TagbarToggle<CR>
+  
+  inoremap <C-H> <C-o>h
+  inoremap <C-J> <C-o>j
+  inoremap <C-K> <C-o>k
+  inoremap <C-L> <C-o>l
+  inoremap <C-B> <C-o>b
+  inoremap <C-W> <C-o>w
 " }
