@@ -6,6 +6,15 @@ let mapleader = ","
 
   " Enable use of the mouse for all modes
   set mouse=a
+  
+  " Clipboard
+    if has('clipboard')
+        if has('unnamedplus')  " When possible use + register for copy-paste
+            set clipboard=unnamed,unnamedplus
+        else         " On mac and Windows, use * register for copy-paste
+            set clipboard=unnamed
+        endif
+    endif
 
   " Use case insensitive search, except when using capital letters
   set ignorecase
@@ -107,7 +116,6 @@ let mapleader = ","
     " If undotree is opened, it is likely one wants to interact with it.
     let g:undotree_SetFocusWhenToggle=1
 
-
   " NERD Tree 
     autocmd StdinReadPre * let s:std_in=1
     autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
@@ -125,7 +133,6 @@ let mapleader = ","
     let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 
   " Syntastic
-
     set statusline+=%#warningmsg#
     set statusline+=%{SyntasticStatuslineFlag()}
     set statusline+=%*
@@ -134,7 +141,8 @@ let mapleader = ","
     let g:syntastic_auto_loc_list = 1
     let g:syntastic_check_on_open = 1
     let g:syntastic_check_on_wq = 0  
-    let g:syntastic_javascript_checkers = ['eslint']
+    let g:syntastic_jeavascript_checkers = ['jshint']
+    "let g:syntastic_javascript_checkers = ['eslint']
     "let g:syntastic_javascript_eslint_exec = 'eslint_d'
 
   " Vim auto close
@@ -171,10 +179,12 @@ let mapleader = ","
   map <C-e> :NERDTreeToggle<CR>
   nmap <F8> :TagbarToggle<CR>
   
-  inoremap <C-H> <C-o>h
-  inoremap <C-J> <C-o>j
-  inoremap <C-K> <C-o>k
-  inoremap <C-L> <C-o>l
-  inoremap <C-B> <C-o>b
-  inoremap <C-W> <C-o>w
+  " Motion under insert mode
+  inoremap <C-h> <C-o>h
+  inoremap <C-j> <C-o>j
+  inoremap <C-k> <C-o>k
+  inoremap <C-l> <C-o>l
+  inoremap <C-b> <C-o>b
+  inoremap <C-w> <C-o>w
+  inoremap <C-e> <C-o>e
 " }
