@@ -45,37 +45,6 @@ let mapleader = ","
   set foldnestmax=3
   set foldlevel=0
 " }
- 
-" Plug Conf {
-  " Undotree 
-  if has("persistent_undo")
-  set undodir=~/.vim/undodir/
-      set undofile
-  endif
-
-  " NERD Tree 
-  autocmd StdinReadPre * let s:std_in=1
-  autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-  let g:NERDTreeDirArrowExpandable = '▸'
-  let g:NERDTreeDirArrowCollapsible = '▾'
-
-  " Easy Motion
-    " <Leader>f{char} to move to {char}
-    map  <Leader>f <Plug>(easymotion-bd-f)
-    nmap <Leader>f <Plug>(easymotion-overwin-f)
-
-    " s{char}{char} to move to {char}{char}
-    nmap s <Plug>(easymotion-overwin-f2)
-
-    " Move to line
-    map <Leader>L <Plug>(easymotion-bd-jk)
-    nmap <Leader>L <Plug>(easymotion-overwin-line)
-
-    " Move to word
-    map  <Leader>w <Plug>(easymotion-bd-w)
-    nmap <Leader>w <Plug>(easymotion-overwin-w)
-" }
 
 " Plug {
 " Vim-Plug Setup {
@@ -94,7 +63,7 @@ let mapleader = ","
   Plug 'Shougo/vimproc.vim', {'do': 'make'} | Plug 'Shougo/vimshell.vim'
   Plug 'vim-syntastic/syntastic'
   Plug 'vim-airline/vim-airline'
-  Plug 'Valloric/YouCompleteMe', {'do': './install.py --clang-completer'}
+  Plug 'Valloric/YouCompleteMe', {'do': './install.py --clang-completer'} " , 'for': ['clang']}
   Plug 'majutsushi/tagbar'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
@@ -122,6 +91,22 @@ let mapleader = ","
     autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
     let g:NERDTreeDirArrowExpandable = '▸'
     let g:NERDTreeDirArrowCollapsible = '▾'
+
+  " Easy Motion
+    " <Leader>f{char} to move to {char}
+    map  <Leader>f <Plug>(easymotion-bd-f)
+    nmap <Leader>f <Plug>(easymotion-overwin-f)
+
+    " s{char}{char} to move to {char}{char}
+    nmap s <Plug>(easymotion-overwin-f2)
+
+    " Move to line
+    map <Leader>L <Plug>(easymotion-bd-jk)
+    nmap <Leader>L <Plug>(easymotion-overwin-line)
+
+    " Move to word
+    map  <leader>w <plug>(easymotion-bd-w)
+    nmap <Leader>w <Plug>(easymotion-overwin-w)
 
   " Neo Complete
     let g:neocomplete#enable_at_startup = 1
@@ -159,7 +144,8 @@ let mapleader = ","
 
 " Interface {
   set laststatus=2
-
+  set cursorline
+  set cursorcolumn
   if has('gui_running')
     set background=dark
     colorscheme quantum
