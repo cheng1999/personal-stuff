@@ -9,11 +9,11 @@ let mapleader = ","
   
   " Clipboard
     if has('clipboard')
-        if has('unnamedplus')  " When possible use + register for copy-paste
-            set clipboard=unnamed,unnamedplus
-        else         " On mac and Windows, use * register for copy-paste
-            set clipboard=unnamed
-        endif
+      if has('unnamedplus')  " When possible use + register for copy-paste
+        set clipboard=unnamed,unnamedplus
+      else         " On mac and Windows, use * register for copy-paste
+        set clipboard=unnamed
+      endif
     endif
 
   " Use case insensitive search, except when using capital letters
@@ -59,14 +59,17 @@ let mapleader = ","
   Plug 'mbbill/undotree'
   Plug 'scrooloose/nerdtree'
   Plug 'easymotion/vim-easymotion'
-  Plug 'ctrlpvim/ctrlp.vim'
+  "Plug 'ctrlpvim/ctrlp.vim'
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'Shougo/vimproc.vim', {'do': 'make'} | Plug 'Shougo/vimshell.vim'
   Plug 'vim-syntastic/syntastic'
-  Plug 'vim-airline/vim-airline'
+  "Plug 'w0rp/ale'
   Plug 'Valloric/YouCompleteMe', {'do': './install.py --clang-completer'} " , 'for': ['clang']}
   Plug 'majutsushi/tagbar'
+  Plug 'junegunn/limelight.vim'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
+  Plug 'nathanaelkane/vim-indent-guides'
 
   " Themes
   Plug 'jnurmine/Zenburn'
@@ -117,6 +120,12 @@ let mapleader = ","
     "Youcompleteme fix
     let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 
+  " ALE
+    "set statusline+=%{ALEGetStatusLine()}
+    "let g:ale_lint_on_save = 1
+    "let g:ale_lint_on_text_changed = 0
+    "let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
+    "let g:airline_section_error = airline#section#create_right(['ALE'])
   " Syntastic
     set statusline+=%#warningmsg#
     set statusline+=%{SyntasticStatuslineFlag()}
